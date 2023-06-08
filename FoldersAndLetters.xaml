@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Post"
         mc:Ignorable="d"
-        Title="FoldersAndLetters" Height="450" Width="800">
+        Title="FoldersAndLetters" Height="450" Width="800" MouseRightButtonDown="Window_MouseRightButtonDown" MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -17,8 +17,19 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Папки:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
-        <ListBox x:Name="FolderCont" Grid.Row="1" Grid.Column="0" SelectionChanged="FolderCont_SelectionChanged"/>
-        <Button Content="Написать" Grid.Row="2" VerticalAlignment="Center" Grid.Column="0"/>
-        <ListBox x:Name="LettersCon" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" SelectionChanged="LettersCon_SelectionChanged"/>
+        <ListBox x:Name="FolderCont" Grid.Row="1" Grid.Column="0" SelectionChanged="FolderCont_SelectionChanged" BorderBrush="#FF121BE7"/>
+        <Button x:Name="WriteLetter" Content="Написать" Grid.Row="2" VerticalAlignment="Center" Grid.Column="0" Click="WriteLetter_Click"/>
+        <ListBox x:Name="LettersCon" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" BorderBrush="#FF1118D3" SelectionChanged="LettersCon_SelectionChanged">
+            <ListBox.Resources>
+                <ContextMenu x:Key="MyElementMenu">
+                    <MenuItem Header="Open" Click="Open_click"/>
+                    <MenuItem Header="Answer" Click="Answer_click"/>
+                </ContextMenu>
+                <!--Sets a context menu for each ListBoxItem in the current ListBox-->
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="ContextMenu" Value="{StaticResource MyElementMenu}"/>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
     </Grid>
 </Window>

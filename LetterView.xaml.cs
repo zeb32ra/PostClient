@@ -65,7 +65,7 @@ namespace Post
 
         private void Respond_Click(object sender, RoutedEventArgs e)
         {
-            RespondLetter win = new RespondLetter(to, from, sub, content);
+            RespondLetter win = new RespondLetter(to, from, sub, content, true);
             win.Show();
             this.Close();
         }

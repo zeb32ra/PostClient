@@ -27,23 +27,40 @@ namespace Post
         string from_;
         string sub_;
         string content;
-        public RespondLetter(string to, string from, string sub, string con)
+        public RespondLetter(string to, string from, string sub, string con, bool r_or_w)
         {
             InitializeComponent();
             to_ = to;
             from_ = from;
             sub_ = sub;
             content = con;
-            Totxt.Text = to_;
+            Totxt.Text = from_;
+            if(r_or_w)
+            {
+                Totxt.IsEnabled = false;
+            }
+            else
+            {
+                Totxt.IsEnabled = true;
+            }
 
 
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            LetterView win = new LetterView(from_, to_, sub_, content);
-            win.Show();
-            this.Close();
+            if(Totxt.IsEnabled)
+            {
+                FoldersAndLetters win = new FoldersAndLetters();
+                win.Show();
+                this.Close();
+            }
+            else
+            {
+                LetterView win = new LetterView(from_, to_, sub_, content);
+                win.Show();
+                this.Close();
+            }
         }
 
         private void Send_Click(object sender, RoutedEventArgs e)

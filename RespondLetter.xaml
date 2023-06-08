@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Text="Кому:" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
         <TextBlock Grid.Row="1" Text="Тема:" VerticalAlignment="Center" Grid.Column="0"/>
-        <TextBlock x:Name="Totxt" Grid.Column="1" VerticalAlignment="Center" Grid.Row="0"/>
+        <TextBox x:Name="Totxt" Grid.Column="1" VerticalAlignment="Center" Grid.Row="0"/>
         <TextBox x:Name="SubjectTxt" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center"/>
         <ComboBox x:Name="Postname" Grid.Row="0" Grid.Column="2">
             <ComboBoxItem Content="Mail" Tag="imap.mail.ru"/>

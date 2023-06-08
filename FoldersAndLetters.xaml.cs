@@ -24,7 +24,6 @@ namespace Post
         private CommonFolderCollection folders = ImapHelper.GetFolders();
         MessageCollection messages;
         Message ms;
-        int count = 0;
         public FoldersAndLetters()
         {
             InitializeComponent();
@@ -55,12 +54,12 @@ namespace Post
                     string to = ms.To[0].Address;
                     string theme = ms.Subject.ToString();
                     string content = ms.Body.Html.ToString();
-                    if(count == 1)
-                    {
-                        LetterView win = new LetterView(from, to, theme, content);
-                        win.Show();
-                        this.Close();
-                    }
+                   
+                    
+                    LetterView win = new LetterView(from, to, theme, content);
+                    win.Show();
+                    this.Close();
+                  
                 }
             }
         }
@@ -86,14 +85,5 @@ namespace Post
             this.Close();
         }
 
-        private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            count = 0;
-        }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            count = 1;
-        }
     }
 }

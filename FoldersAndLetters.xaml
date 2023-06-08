@@ -19,6 +19,6 @@
         <Label Content="Папки:" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"/>
         <ListBox x:Name="FolderCont" Grid.Row="1" Grid.Column="0" SelectionChanged="FolderCont_SelectionChanged"/>
         <Button Content="Написать" Grid.Row="2" VerticalAlignment="Center" Grid.Column="0"/>
-        <ListBox Grid.Column="1" Grid.Row="0" Grid.RowSpan="3"/>
+        <ListBox x:Name="LettersCon" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" SelectionChanged="LettersCon_SelectionChanged"/>
     </Grid>
 </Window>

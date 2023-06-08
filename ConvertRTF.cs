@@ -1,30 +1,34 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿//Проверьте NuGet пакеты
+
+using Spire.Doc;
+
+//
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 
-namespace Post
+namespace HtmlRtf
 {
-    class ConvertRTF
+    internal class HtmlRtfConverter
     {
-        public void saveRTFfile(string filename, TextPointer start, TextPointer end)
+        public static void ToRtf(string html)
         {
-            TextRange range = new TextRange(start, end);
-            FileStream fstream = new FileStream(filename, FileMode.OpenOrCreate);
-            range.Save(fstream, DataFormats.Rtf);
-            fstream.Close();
+            File.WriteAllText("msg.html", html);
+            var d = new Document("msg.html", FileFormat.Html);
+            d.SaveToFile("msg.rtf", FileFormat.Rtf);
+            d.Close();
+            File.Delete("msg.html");
         }
-        public void loadRTFfile(string filename, TextPointer start, TextPointer end)
+
+        public static void ToHtml(TextRange rtf)
         {
-            TextRange range = new TextRange(start, end);
-            FileStream fstream = new FileStream(filename, FileMode.OpenOrCreate);
-            range.Load(fstream, DataFormats.Rtf);
-            fstream.Close();
+            var fs = new FileStream("send.rtf", FileMode.Create);
+            rtf.Save(fs, DataFormats.Rtf);
+            fs.Close();
+            var d = new Document("send.rtf", FileFormat.Rtf);
+            d.SaveToFile("send.html", FileFormat.Html);
+            d.Close();
+            File.Delete("send.rtf");
         }
     }
 }

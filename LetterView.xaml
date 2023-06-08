@@ -1,0 +1,34 @@
+﻿<Window x:Class="Post.LetterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Post"
+        mc:Ignorable="d"
+        Title="LetterView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Кому:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="От кого:" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Тема:" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Totxt" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Fromtxt" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBlock x:Name="Subtxt" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center"/>
+        <Button x:Name="Back" Content="Вернуться" Grid.Row="4" Click="Back_Click"/>
+        <Button x:Name="Respond" Grid.Column="1" Content="Ответить" Grid.Row="4" Click="Respond_Click"/>
+
+        <RichTextBox x:Name="Reachtxb" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+            
+        </RichTextBox>
+    </Grid>
+</Window>

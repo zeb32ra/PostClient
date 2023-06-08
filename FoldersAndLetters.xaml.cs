@@ -1,4 +1,5 @@
-﻿using ImapX.Collections;
+﻿using ImapX;
+using ImapX.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,29 @@ namespace Post
         private void FolderCont_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             messages = ImapHelper.GetMessagesForFolder(FolderCont.SelectedItem.ToString());
+            foreach(var message in messages) { 
+                LettersCon.Items.Add(message.Subject);
+            }
+        }
+
+        private void LettersCon_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // transfer отправитель, получатель, тема и содержимое письма.
+            foreach(var message in messages)
+            {
+                if(message.Subject == LettersCon.SelectedItem.ToString())
+                {
+                    Message ms = message;
+                    string from = ms.From.Address;
+                    string to = ms.To[0].Address;
+                    string theme = ms.Subject.ToString();
+                    string content = ms.Body.Html.ToString();
+
+                    LetterView win = new LetterView(from, to, theme, content);
+                    win.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }

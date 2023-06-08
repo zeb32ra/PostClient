@@ -55,7 +55,7 @@ namespace Post
                     string theme = ms.Subject.ToString();
                     string content = ms.Body.Html.ToString();
                    
-                    
+                    // если левая кнопка мыши
                     LetterView win = new LetterView(from, to, theme, content);
                     win.Show();
                     this.Close();

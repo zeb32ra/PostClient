@@ -33,6 +33,7 @@ namespace Post
             }
         }
 
+
         private void FolderCont_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             messages = ImapHelper.GetMessagesForFolder(FolderCont.SelectedItem.ToString());
